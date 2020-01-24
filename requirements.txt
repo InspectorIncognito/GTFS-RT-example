@@ -1,2 +1,2 @@
-protobuf==3.11.2
+gtfs-realtime-bindings==0.0.6
 Flask==1.1.1
