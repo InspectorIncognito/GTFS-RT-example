@@ -22,4 +22,8 @@ Las dependencias se encuentran en el archivo `requirements.txt` y se pueden inst
 
 # Ejecución
 
-para generar y leer un archivo gtfs-rt con datos de posición de vehículos debe ejecutar el archivo `python build_proto.py`.
+Para generar y leer un archivo gtfs-rt con datos de posición de vehículos debe ejecutar el archivo `python build_proto.py`.
+
+# Disponibilizar archivo gtfs-rt a través de url
+
+para poder obtener el archivo a través de una url es necesario levantar un servidor, esto se puede lograr con el archivo `server.py` y consultando una URL con el formato `http://localhost:5000/media/nombre_archivo`. El servidor irá a buscar el archivo `nombre_archivo` en la carpeta `output`.
