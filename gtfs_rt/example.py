@@ -4,6 +4,8 @@ import uuid
 
 from google.transit import gtfs_realtime_pb2
 
+from gtfs_rt.config import OUTPUT_PATH
+
 
 def create_vehicle_position_entity(timestamp, trip_route_id, trip_direction_id, vehicle_id, vehicle_label,
                                    vehicle_license_plate, pos_latitude, pos_longitude, pos_bearing, pos_odometer,
@@ -71,27 +73,6 @@ def build_vehicle_location_proto():
         feed_message.entity.append(vehicle_location)
 
     # Write the new address book back to disk.
-    f = open(os.path.join('output', 'data.proto'), "wb")
+    f = open(os.path.join(OUTPUT_PATH, 'data.proto'), "wb")
     f.write(feed_message.SerializeToString())
     f.close()
-
-
-def read_gtfs_rt():
-    # Read the existing gtfs-rt.
-    try:
-        f = open(os.path.join('output', 'data.proto'), "rb")
-        feed = gtfs_realtime_pb2.FeedMessage()
-        feed.ParseFromString(f.read())
-
-        for entity in feed.entity:
-            if entity.HasField('vehicle'):
-                print(entity.vehicle)
-
-        f.close()
-    except IOError:
-        print('vehicle position' + ": Could not open file.  Creating a new one.")
-
-
-if __name__ == '__main__':
-    build_vehicle_location_proto()
-    read_gtfs_rt()
