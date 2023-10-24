@@ -1,29 +1,33 @@
 # README
 
-Proyecto para generar archivos con formato GTFS-RT con python
+Project to generate GTFS-RT formatted files with Python.
 
-# Configuración
+# Configuration
 
-## Configuración de python
+## Python Configuration
 
-El proyecto ha sido usado con python 3.7 por lo que se recomienda usar esa versión. Además, es muy aconsejable generar un entorno virtual para la ejecución del proyecto
+The project has been used with Python 3.7, so it is recommended to use that version. Additionally, creating a virtual
+environment for running the project is highly advisable.
 
+```shell
+# Create a virtual environment; you can use the --python parameter to reference a specific Python version
+virtualenv venv --python /usr/bin/python3
+
+# Activate the virtual environment
+source venv/bin/activate
 ```
-    # crear entorno virtual, se puede usar el parámetro --python para referencia una versión específica de python
-    virtualenv venv --python /usr/bin/python3
 
-    # activar entorno virtual
-    source venv/bin/activate
-```
+## Dependency Installation
 
-## Instalación de dependencias
+The dependencies are listed in the `requirements.txt` file and can be installed directly using the
+command `pip install -r requirements.txt`.
 
-Las dependencias se encuentran en el archivo `requirements.txt` y se pueden instalar directamente con el comando `pip install requirements.txt`. 
+# Execution
 
-# Ejecución
+To generate and read a GTFS-RT file with vehicle position data, execute the `python build_proto.py` file.
 
-Para generar y leer un archivo gtfs-rt con datos de posición de vehículos debe ejecutar el archivo `python build_proto.py`.
+# Serve GTFS-RT File via URL
 
-# Disponibilizar archivo gtfs-rt a través de url
-
-para poder obtener el archivo a través de una url es necesario levantar un servidor, esto se puede lograr con el archivo `server.py` y consultando una URL con el formato `http://localhost:5000/media/nombre_archivo`. El servidor irá a buscar el archivo `nombre_archivo` en la carpeta `output`.
+To obtain the file via a URL, you need to run a server, which can be achieved using the `server.py` file. You can access
+the file through a URL with the format `http://localhost:5000/media/filename`. The server will look for the `filename`
+in the `output` folder.
