@@ -9,7 +9,7 @@ app = Flask(__name__)
 def download(filename):
     uploads = os.path.join(current_app.root_path, 'output')
 
-    return send_from_directory(directory=uploads, filename=filename)
+    return send_from_directory(directory=uploads, path=filename)
 
 
 if __name__ == '__main__':
